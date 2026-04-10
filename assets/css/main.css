@@ -814,6 +814,28 @@ section {
     font-size: 0.9rem;
 }
 
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--text);
+}
+
 /* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
