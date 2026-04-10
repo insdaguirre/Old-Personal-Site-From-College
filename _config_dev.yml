@@ -1,0 +1,6 @@
+baseurl: ""
+url: "http://127.0.0.1:4000"
+
+theme_settings:
+  meta:
+    url: "http://127.0.0.1:4000"

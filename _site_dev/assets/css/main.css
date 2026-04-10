@@ -1,0 +1,1113 @@
+/* Apple System Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Apple Stocks Color Palette */
+    --apple-blue: #007AFF;
+    --apple-green: #34C759;
+    --apple-orange: #FF9500;
+    --apple-red: #FF3B30;
+    --apple-purple: #AF52DE;
+    --apple-pink: #FF2D92;
+    --apple-yellow: #FFCC00;
+    
+    /* Background Colors */
+    --background: #000000;
+    --surface: #1C1C1E;
+    --surface-secondary: #2C2C2E;
+    --surface-tertiary: #3A3A3C;
+    
+    /* Text Colors */
+    --text: #FFFFFF;
+    --text-secondary: #8E8E93;
+    --text-tertiary: #636366;
+    --text-quaternary: #48484A;
+    
+    /* Border Colors */
+    --border: #38383A;
+    --border-secondary: #48484A;
+    --border-tertiary: #636366;
+    
+    /* Status Colors */
+    --success: var(--apple-green);
+    --warning: var(--apple-orange);
+    --error: var(--apple-red);
+    --info: var(--apple-blue);
+    
+    /* Bloomberg Terminal Colors */
+    --bloomberg-orange: #FF6600;
+    --bloomberg-black: #000000;
+    --bloomberg-yellow: #FFFF00;
+    --terminal-green: #00FF41;
+    --matrix-green-bright: #00FF41;
+    --matrix-green-dim: rgba(0, 255, 65, 0.3);
+    
+    /* Typography System */
+    --font-display: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    --font-data: 'JetBrains Mono', 'Courier New', monospace;
+    --font-terminal: 'JetBrains Mono', monospace;
+    
+    /* Legacy variables for compatibility */
+    --primary: var(--apple-blue);
+    --secondary: var(--apple-green);
+    --accent: var(--apple-orange);
+    --terminal-text: var(--text);
+    --terminal-text-dim: var(--text-secondary);
+    --terminal-border: var(--border);
+    
+    /* Apple Subtle Effects - Simplified for better performance */
+    --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --shadow-large: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.25);
+    
+    /* Apple Glow Effects (subtle) */
+    --glow-blue: 0 0 20px rgba(0, 122, 255, 0.3);
+    --glow-green: 0 0 20px rgba(52, 199, 89, 0.3);
+    --glow-orange: 0 0 20px rgba(255, 149, 0, 0.3);
+    --glow-red: 0 0 20px rgba(255, 59, 48, 0.3);
+    
+    /* Legacy glow variables for compatibility */
+    --glow-terminal: var(--glow-green);
+    --glow-terminal-strong: var(--glow-green);
+    --glow-cyan: var(--glow-blue);
+    --glow-cyan-strong: var(--glow-blue);
+    --glow-bloomberg: var(--glow-orange);
+    --glow-matrix: var(--glow-green);
+    --glow-data: var(--glow-blue);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--background);
+    overflow-x: hidden;
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Canvas Background */
+#tron-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform; /* GPU acceleration hint */
+    contain: layout style paint; /* CSS containment for better performance */
+}
+
+/* Dark overlay for better readability */
+#tron-canvas::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Apple-style Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(28, 28, 30, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-subtle);
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-size: 0.9rem;
+    will-change: background-color, box-shadow; /* GPU acceleration for scroll effects */
+    contain: layout style; /* CSS containment */
+}
+
+/* Bloomberg Terminal Ticker */
+.data-ticker {
+    background: var(--bloomberg-black);
+    border-bottom: 2px solid var(--bloomberg-orange);
+    padding: 0.75rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+    position: relative;
+}
+
+/* Add gradient fade effects at edges for smoother visual transition */
+.data-ticker::before,
+.data-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.data-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bloomberg-black), transparent);
+}
+
+.data-ticker::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bloomberg-black), transparent);
+}
+
+
+.ticker-item {
+    display: inline-block;
+    margin-right: 2rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    background: var(--surface);
+    border: 1px solid var(--bloomberg-orange);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-family: var(--font-terminal);
+    animation: data-flicker 3s ease-in-out infinite;
+}
+
+.ticker-item .price-up {
+    color: var(--terminal-green);
+    text-shadow: 0 0 5px var(--terminal-green);
+}
+
+.ticker-item .price-down {
+    color: var(--bloomberg-orange);
+    text-shadow: 0 0 5px var(--bloomberg-orange);
+}
+
+@keyframes scroll-ticker {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Optimized ticker animation - reduced duration for better performance */
+.ticker-content {
+    display: inline-block;
+    animation: scroll-ticker 120s linear infinite; /* Reduced from 600s to 120s */
+    font-family: var(--font-terminal);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    will-change: transform; /* GPU acceleration hint */
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.logo {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    position: relative;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--apple-blue);
+    transition: width 0.2s ease;
+    border-radius: 1px;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(28, 28, 30, 0.6) 100%);
+    perspective: 1000px;
+    will-change: transform; /* GPU acceleration for parallax */
+    contain: layout style; /* CSS containment */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    background: rgba(28, 28, 30, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 3rem;
+    border: 2px solid var(--bloomberg-orange);
+    box-shadow: var(--shadow-large), 0 0 20px rgba(255, 102, 0, 0.3);
+    max-width: 800px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+}
+
+.hero-content:hover {
+    transform: rotateX(2deg) rotateY(2deg);
+}
+
+/* Bloomberg Terminal Command Styling */
+.terminal-prompt {
+    font-family: var(--font-terminal);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--terminal-green);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 0.75rem 1.25rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--bloomberg-orange);
+    text-shadow: 0 0 8px var(--terminal-green);
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.prompt-symbol {
+    color: var(--bloomberg-orange);
+    font-weight: 700;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 5px var(--bloomberg-orange);
+}
+
+.prompt-text {
+    color: var(--terminal-green);
+    font-weight: 600;
+    text-shadow: 0 0 5px var(--terminal-green);
+}
+
+.terminal-output {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    margin-left: 0;
+    position: relative;
+    line-height: 1.7;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--terminal-green);
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    color: var(--text);
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--terminal-green) 30%, var(--bloomberg-orange) 70%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.6);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+@keyframes glitchText {
+    0%, 90%, 100% {
+        transform: translate(0);
+        text-shadow: var(--glow-terminal-strong);
+    }
+    91% {
+        transform: translate(-2px, 2px);
+        text-shadow: var(--glow-bloomberg);
+    }
+    92% {
+        transform: translate(2px, -2px);
+        text-shadow: var(--glow-data);
+    }
+    93% {
+        transform: translate(0);
+        text-shadow: var(--glow-terminal-strong);
+    }
+}
+
+.hero p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.hero p:first-of-type {
+    color: var(--apple-orange);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.875rem 1.75rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: var(--shadow-subtle);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-primary {
+    background: var(--apple-blue);
+    color: white;
+    border: 1px solid var(--apple-blue);
+}
+
+.btn-primary:hover {
+    background: #0056CC;
+    border-color: #0056CC;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--apple-orange);
+    border: 1px solid var(--apple-orange);
+}
+
+.btn-secondary:hover {
+    background: var(--apple-orange);
+    color: white;
+}
+
+/* Sections */
+.section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    scroll-margin-top: 90px;
+}
+
+.section-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text);
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--text) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* About Section */
+.about {
+    background: linear-gradient(180deg, rgba(0, 122, 255, 0.03) 0%, transparent 100%);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h3 {
+    font-family: var(--font-terminal);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--terminal-green);
+    text-shadow: 0 0 10px var(--terminal-green);
+    letter-spacing: 1px;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    font-family: var(--font-display);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.skill-tag {
+    background: var(--surface-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-transform: lowercase;
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+.skill-tag:hover {
+    background: var(--apple-blue);
+    color: white;
+    border-color: var(--apple-blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-subtle);
+}
+
+.about-image {
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+    box-shadow: var(--glow-cyan-strong);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.profile-link {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-link::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    animation: rotate 10s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.profile-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 240, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.profile-overlay i {
+    font-size: 3rem;
+    color: var(--primary);
+    filter: drop-shadow(var(--glow-cyan));
+}
+
+.profile-link:hover .profile-img {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 1),
+                0 0 20px rgba(0, 240, 255, 0.8),
+                0 0 40px rgba(0, 240, 255, 0.5),
+                0 0 80px rgba(0, 240, 255, 0.3);
+}
+
+.profile-link:hover .profile-overlay {
+    opacity: 1;
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 100%;
+}
+
+.project-card {
+    background: var(--surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 2px solid var(--bloomberg-orange);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-medium), 0 0 15px rgba(255, 102, 0, 0.2);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-display);
+    transform-style: preserve-3d;
+    will-change: transform; /* GPU acceleration for 3D tilt */
+    contain: layout style paint; /* CSS containment */
+}
+
+.project-card:hover {
+    transform: translateY(-8px) rotateX(5deg) rotateY(5deg);
+    box-shadow: var(--shadow-large), 0 0 30px rgba(0, 122, 255, 0.4);
+    border-color: var(--apple-blue);
+    background: rgba(0, 122, 255, 0.05);
+    animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-icon {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.3rem;
+    box-shadow: var(--glow-cyan);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-icon {
+    background: rgba(0, 240, 255, 0.1);
+    box-shadow: var(--glow-cyan-strong);
+    transform: rotate(5deg);
+}
+
+.project-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--terminal-text);
+    letter-spacing: 1px;
+}
+
+.project-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+    max-height: none;
+    overflow: visible;
+}
+
+.tech-tag {
+    background: transparent;
+    color: var(--secondary);
+    border: 1px solid rgba(0, 128, 255, 0.5);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    border-color: var(--secondary);
+    color: var(--secondary);
+    box-shadow: var(--glow-blue);
+    background: rgba(0, 128, 255, 0.1);
+}
+
+.project-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.project-card .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* Contact Section */
+.contact {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 240, 255, 0.03) 100%);
+}
+
+.contact-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.contact-text {
+    color: var(--terminal-text);
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    font-weight: 400;
+    font-family: 'Fira Code', monospace;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-subtle);
+    font-size: 1.25rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+.social-link:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    background: var(--apple-blue);
+    color: white;
+    border-color: var(--apple-blue);
+}
+
+/* Footer */
+.footer {
+    background: var(--surface);
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    box-shadow: var(--shadow-subtle);
+}
+
+.footer p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    font-size: 0.9rem;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.75rem;
+    position: relative;
+    z-index: 1001;
+    box-shadow: var(--shadow-subtle);
+    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
+
+.mobile-menu-btn:hover {
+    background: var(--apple-blue);
+    color: white;
+    border-color: var(--apple-blue);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Scan line effect */
+@keyframes scanline {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+.scan-line {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(0, 240, 255, 0.1), transparent);
+    pointer-events: none;
+    z-index: 9999;
+    animation: scanline 3s linear infinite;
+}
+
+/* Matrix Bloomberg Apple Fusion Animations */
+@keyframes glitch-text {
+    0%, 100% {
+        transform: translate(0);
+        text-shadow: 0 0 0 transparent;
+    }
+    10% {
+        transform: translate(-2px, 2px);
+        text-shadow: 2px 0 var(--bloomberg-orange), -2px 0 var(--terminal-green);
+    }
+    20% {
+        transform: translate(2px, -2px);
+        text-shadow: -2px 0 var(--bloomberg-orange), 2px 0 var(--terminal-green);
+    }
+    30% {
+        transform: translate(-1px, 1px);
+        text-shadow: 1px 0 var(--bloomberg-orange), -1px 0 var(--terminal-green);
+    }
+    40% {
+        transform: translate(1px, -1px);
+        text-shadow: -1px 0 var(--bloomberg-orange), 1px 0 var(--terminal-green);
+    }
+    50% {
+        transform: translate(0);
+        text-shadow: 0 0 0 transparent;
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--terminal-green);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--terminal-green), 0 0 30px var(--terminal-green);
+    }
+}
+
+@keyframes data-flicker {
+    0%, 100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+    50% {
+        opacity: 0.8;
+        filter: brightness(1.2);
+    }
+}
+
+@keyframes tilt-3d {
+    0% {
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    }
+    100% {
+        transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+    }
+}
+
+@keyframes matrix-glow {
+    0%, 100% {
+        text-shadow: 0 0 5px var(--terminal-green);
+    }
+    50% {
+        text-shadow: 0 0 20px var(--terminal-green), 0 0 30px var(--terminal-green);
+    }
+}
+
+/* Mobile Optimizations for Matrix Bloomberg Apple Fusion */
+@media (max-width: 768px) {
+    /* Reduce Matrix columns by 50% for mobile performance */
+    #tron-canvas {
+        opacity: 0.7;
+    }
+    
+    /* Disable 3D tilt effects on mobile */
+    .project-card:hover {
+        transform: translateY(-4px);
+        animation: none;
+    }
+    
+    .hero-content:hover {
+        transform: none;
+    }
+    
+    /* Simplify glitch animations */
+    .hero h1 {
+        animation: none;
+        text-shadow: 0 0 5px var(--terminal-green);
+    }
+    
+    .section-title {
+        animation: none;
+    }
+    
+    /* Reduce particle count */
+    .terminal-prompt {
+        animation: none;
+    }
+    
+    /* Optimize ticker for mobile */
+    .ticker-item {
+        font-size: 0.75rem;
+        margin-right: 1rem;
+        animation: none;
+    }
+    
+    /* Responsive grid adjustments */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .project-card {
+        min-height: 250px;
+        padding: 1.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.5;
+    }
+    
+    .hero-content {
+        padding: 2rem;
+        margin: 1rem;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .project-card {
+        min-height: 280px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.3rem;
+        line-height: 1.6;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .terminal-prompt {
+        font-size: 0.9rem;
+    }
+    
+    .terminal-output {
+        font-size: 1.3rem;
+        line-height: 1.6;
+        padding: 1.25rem;
+        font-weight: 500;
+    }
+    
+    .hero h1 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+        box-shadow: var(--glow-cyan);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .project-card {
+        min-height: 260px;
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+        line-height: 1.8;
+    }
+
+    .profile-img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
