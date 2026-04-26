@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-25T00:18:35.826114+00:00",
+  "last_updated": "2026-04-26T00:19:24.739219+00:00",
   "stocks": [
     {
       "symbol": "AAPL",
@@ -109,9 +109,9 @@
     {
       "symbol": "PG",
       "price": 148.18,
-      "change": 2.47,
-      "change_percent": 1.7,
-      "previous_close": 145.71
+      "change": 3.56,
+      "change_percent": 2.46,
+      "previous_close": 144.62
     },
     {
       "symbol": "DIS",
