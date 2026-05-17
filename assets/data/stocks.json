@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-16T00:24:41.737814+00:00",
+  "last_updated": "2026-05-17T00:26:06.954987+00:00",
   "stocks": [
     {
       "symbol": "AAPL",
@@ -95,9 +95,9 @@
     {
       "symbol": "XOM",
       "price": 157.92,
-      "change": 5.14,
-      "change_percent": 3.36,
-      "previous_close": 152.78
+      "change": 6.17,
+      "change_percent": 4.07,
+      "previous_close": 151.75
     },
     {
       "symbol": "WMT",
