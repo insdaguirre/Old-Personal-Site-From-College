@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-06T00:31:07.255372+00:00",
+  "last_updated": "2026-06-07T00:31:55.889133+00:00",
   "stocks": [
     {
       "symbol": "AAPL",
@@ -137,9 +137,9 @@
     {
       "symbol": "BAC",
       "price": 53.83,
-      "change": -0.34,
-      "change_percent": -0.63,
-      "previous_close": 54.17
+      "change": -0.06,
+      "change_percent": -0.11,
+      "previous_close": 53.89
     }
   ]
 }
