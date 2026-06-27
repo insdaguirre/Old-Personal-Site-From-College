@@ -1,145 +1,145 @@
 {
-  "last_updated": "2026-06-26T00:33:21.278612+00:00",
+  "last_updated": "2026-06-27T00:31:03.158018+00:00",
   "stocks": [
     {
       "symbol": "AAPL",
-      "price": 275.15,
-      "change": -17.93,
-      "change_percent": -6.12,
-      "previous_close": 293.08
+      "price": 283.78,
+      "change": 8.63,
+      "change_percent": 3.14,
+      "previous_close": 275.15
     },
     {
       "symbol": "MSFT",
-      "price": 352.83,
-      "change": -12.63,
-      "change_percent": -3.46,
-      "previous_close": 365.46
+      "price": 372.97,
+      "change": 20.14,
+      "change_percent": 5.71,
+      "previous_close": 352.83
     },
     {
       "symbol": "AMZN",
-      "price": 227.01,
-      "change": -7.26,
-      "change_percent": -3.1,
-      "previous_close": 234.27
+      "price": 232.69,
+      "change": 5.68,
+      "change_percent": 2.5,
+      "previous_close": 227.01
     },
     {
       "symbol": "GOOGL",
-      "price": 343.71,
-      "change": -1.58,
-      "change_percent": -0.46,
-      "previous_close": 345.29
+      "price": 337.39,
+      "change": -6.32,
+      "change_percent": -1.84,
+      "previous_close": 343.71
     },
     {
       "symbol": "NVDA",
-      "price": 195.74,
-      "change": -3.26,
+      "price": 192.53,
+      "change": -3.21,
       "change_percent": -1.64,
-      "previous_close": 199.0
+      "previous_close": 195.74
     },
     {
       "symbol": "META",
-      "price": 542.87,
-      "change": -14.8,
-      "change_percent": -2.65,
-      "previous_close": 557.67
+      "price": 550.25,
+      "change": 7.38,
+      "change_percent": 1.36,
+      "previous_close": 542.87
     },
     {
       "symbol": "TSLA",
-      "price": 375.12,
-      "change": -0.41,
-      "change_percent": -0.11,
-      "previous_close": 375.53
+      "price": 379.71,
+      "change": 4.59,
+      "change_percent": 1.22,
+      "previous_close": 375.12
     },
     {
       "symbol": "BRK-B",
-      "price": 487.81,
-      "change": -7.0,
-      "change_percent": -1.41,
-      "previous_close": 494.81
+      "price": 498.66,
+      "change": 10.85,
+      "change_percent": 2.22,
+      "previous_close": 487.81
     },
     {
       "symbol": "JPM",
-      "price": 335.12,
-      "change": 1.67,
-      "change_percent": 0.5,
-      "previous_close": 333.45
+      "price": 329.05,
+      "change": -6.07,
+      "change_percent": -1.81,
+      "previous_close": 335.12
     },
     {
       "symbol": "V",
-      "price": 330.52,
-      "change": -1.71,
-      "change_percent": -0.51,
-      "previous_close": 332.23
+      "price": 336.23,
+      "change": 5.71,
+      "change_percent": 1.73,
+      "previous_close": 330.52
     },
     {
       "symbol": "MA",
-      "price": 488.92,
-      "change": -5.49,
-      "change_percent": -1.11,
-      "previous_close": 494.41
+      "price": 499.02,
+      "change": 10.1,
+      "change_percent": 2.07,
+      "previous_close": 488.92
     },
     {
       "symbol": "JNJ",
-      "price": 244.88,
-      "change": 3.88,
-      "change_percent": 1.61,
-      "previous_close": 241.0
+      "price": 254.66,
+      "change": 9.78,
+      "change_percent": 3.99,
+      "previous_close": 244.88
     },
     {
       "symbol": "UNH",
-      "price": 415.53,
-      "change": 9.73,
-      "change_percent": 2.4,
-      "previous_close": 405.8
+      "price": 427.89,
+      "change": 12.36,
+      "change_percent": 2.97,
+      "previous_close": 415.53
     },
     {
       "symbol": "XOM",
-      "price": 137.55,
-      "change": 0.65,
-      "change_percent": 0.47,
-      "previous_close": 136.9
+      "price": 136.54,
+      "change": -1.01,
+      "change_percent": -0.73,
+      "previous_close": 137.55
     },
     {
       "symbol": "WMT",
-      "price": 115.78,
-      "change": -3.22,
-      "change_percent": -2.71,
-      "previous_close": 119.0
+      "price": 115.69,
+      "change": -0.09,
+      "change_percent": -0.08,
+      "previous_close": 115.78
     },
     {
       "symbol": "PG",
-      "price": 148.5,
-      "change": -3.54,
-      "change_percent": -2.33,
-      "previous_close": 152.04
+      "price": 149.02,
+      "change": 0.52,
+      "change_percent": 0.35,
+      "previous_close": 148.5
     },
     {
       "symbol": "DIS",
-      "price": 98.05,
-      "change": -3.07,
-      "change_percent": -3.04,
-      "previous_close": 101.12
+      "price": 98.79,
+      "change": 0.74,
+      "change_percent": 0.75,
+      "previous_close": 98.05
     },
     {
       "symbol": "NFLX",
-      "price": 70.9,
-      "change": -0.94,
-      "change_percent": -1.31,
-      "previous_close": 71.84
+      "price": 73.81,
+      "change": 2.91,
+      "change_percent": 4.1,
+      "previous_close": 70.9
     },
     {
       "symbol": "TSM",
-      "price": 434.99,
-      "change": -5.84,
-      "change_percent": -1.32,
-      "previous_close": 440.83
+      "price": 432.35,
+      "change": -2.64,
+      "change_percent": -0.61,
+      "previous_close": 434.99
     },
     {
       "symbol": "BAC",
-      "price": 58.19,
-      "change": 0.46,
-      "change_percent": 0.8,
-      "previous_close": 57.73
+      "price": 57.88,
+      "change": -0.31,
+      "change_percent": -0.53,
+      "previous_close": 58.19
     }
   ]
 }
